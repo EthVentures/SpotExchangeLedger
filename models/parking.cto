@@ -24,6 +24,7 @@ asset ParkingSpot identified by parkingSpotID {
     o String description
     o String city
     o Double ratePerHour
+    o String coordinates optional
     o SpotRating spotRating optional
     o Address address optional
 
