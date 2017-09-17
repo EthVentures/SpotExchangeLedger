@@ -5,9 +5,8 @@ namespace io.ethventures.thespot
 
 concept Address {
     o String street
-    o String house
     o String city
-    o String county
+    o String state
     o String country
     o String zip
 }
@@ -27,8 +26,15 @@ asset ParkingSpot identified by parkingSpotID {
     o String coordinates optional
     o SpotRating spotRating optional
     o Address address optional
-
     --> SpotUser owner
+}
+
+asset Contract identified by contractId {
+  o String contractId
+  --> Tenant tenant
+  --> Landlord landlord
+  o DateTime arrivalDateTime
+  o Double numHours
 }
 
 participant SpotUser identified by userId {
@@ -38,6 +44,15 @@ participant SpotUser identified by userId {
     o Address address optional
     o String[] authorized optional
 }
+
+participant Tenant extends SpotUser {
+
+}
+
+participant Landlord extends SpotUser {
+
+}
+
 
 participant SpotAdmin extends SpotUser {
 
