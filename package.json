@@ -53,7 +53,8 @@
       "!./coverage/**/*",
       "!./node_modules/**/*",
       "!./out/**/*",
-      "!./scripts/**/*"
+      "!./scripts/**/*",
+      "!./app/**/*"
     ],
     "path": "header.txt",
     "blocking": true,
@@ -77,5 +78,9 @@
     "branches": 100,
     "functions": 100,
     "lines": 100
+  },
+  "dependencies": {
+    "passport-auth0": "^0.6.0",
+    "passport-google-oauth": "^1.0.0"
   }
 }
