@@ -2,18 +2,46 @@
  * My Spot Exchange Network
  */
 namespace io.ethventures.thespot
+
+concept Address {
+    o String street
+    o String house
+    o String city
+    o String county
+    o String country
+    o String zip
+}
+
+enum SpotRating {
+  o POOR
+  o AVERAGE
+  o GOOD
+  o GREAT
+}
+
 asset ParkingSpot identified by parkingSpotID {
     o String parkingSpotID
     o String description
     o String city
-    o Double rate
+    o Double ratePerHour
+    o SpotRating spotRating optional
+    o Address address optional
+
     --> SpotUser owner
 }
+
 participant SpotUser identified by userId {
     o String userId
     o String firstName
     o String lastName
+    o Address address optional
+    o String[] authorized optional
 }
+
+participant SpotAdmin extends SpotUser {
+
+}
+
 transaction Reserve {
     --> ParkingSpot parkingspot
     --> SpotUser newOwner

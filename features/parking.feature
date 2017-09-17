@@ -19,7 +19,7 @@ Feature: SpotNetwork
             | alice@email.com | Alice     | A        |
             | bob@email.com   | Bob       | B        |
         And I have added the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 1          | alice@email.com |
             | 2             | 898 Rue De Bordeaux          | Paris        | 2          | bob@email.com   |
         And I have issued the participant io.ethventures.thespot.SpotUser#alice@email.com with the identity alice1
@@ -27,46 +27,46 @@ Feature: SpotNetwork
     Scenario: Alice can read all of the assets
         When I use the identity alice1
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 1          | alice@email.com |
             | 2             | 898 Rue De Bordeaux          | Paris        | 2          | bob@email.com   |
     Scenario: Bob can read all of the assets
         When I use the identity bob1
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 1          | alice@email.com |
             | 2             | 898 Rue De Bordeaux          | Paris        | 2          | bob@email.com   |
     Scenario: Alice can add assets that she owns
         When I use the identity alice1
         And I add the following asset of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 3             | Three       | New York     | 3          | alice@email.com |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 3             | Three       | New York     | 3          | alice@email.com |
     Scenario: Bob can add assets that he owns
         When I use the identity bob1
         And I add the following asset of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 4             | Four        | Rome         | 4          | bob@email.com   |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 4             | Four        | Rome         | 4          | bob@email.com   |
     Scenario: Alice can update her assets
         When I use the identity alice1
         And I update the following asset of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 5        | alice@email.com |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 5        | alice@email.com |
     Scenario: Bob can update his assets
         When I use the identity bob1
         And I update the following asset of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 2             | 898 Rue De Bordeaux          | Paris        | 6        | bob@email.com   |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 2             | 898 Rue De Bordeaux          | Paris        | 6        | bob@email.com   |
     Scenario: Alice can remove her assets
         When I use the identity alice1
@@ -90,7 +90,7 @@ Feature: SpotNetwork
             | parkingspot | newOwner      |
             | 1         | bob@email.com |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate | owner           |
+            | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 1          | bob@email.com |
     Scenario: Bob can submit a transaction for his assets
         When I use the identity bob1
@@ -98,5 +98,5 @@ Feature: SpotNetwork
             | parkingspot | newOwner        |
             | 2         | alice@email.com |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | rate   | owner           |
+            | parkingSpotID | description | city | ratePerHour   | owner           |
             | 2             | 898 Rue De Bordeaux          | Paris        | 2          | alice@email.com   |
