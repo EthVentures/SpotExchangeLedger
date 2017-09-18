@@ -6,7 +6,6 @@ namespace io.ethventures.thespot
 concept ContactDetails {
   o String email  optional
   o String mobilePhone  optional
-  o String homePhone optional
   o Address address optional
 }
 
@@ -31,9 +30,8 @@ participant SpotUser identified by userId {
     o String userId
     o String firstName
     o String lastName
-    o Address address optional
     o ContactDetails contactDetails optional
-    o String[] authorized optional
+
 }
 
 participant Owner extends SpotUser {
@@ -45,7 +43,7 @@ participant Renter extends SpotUser {
 }
 
 participant SpotAdmin extends SpotUser {
-
+  o String[] authorized optional
 }
 
 
@@ -62,7 +60,6 @@ concept SpotFeatures {
   o Boolean selfPark optional
   o Boolean inOutAllowed optional
   o Boolean handicapAccessible optional
-  o Address address optional
 }
 
 asset ParkingSpot identified by parkingSpotID {
