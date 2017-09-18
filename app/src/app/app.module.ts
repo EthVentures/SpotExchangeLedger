@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { DetailsPage } from '../pages/details/details';
 import { MySpotsPage } from '../pages/my-spots/my-spots';
 import { ReservePage } from '../pages/reserve/reserve';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,7 +24,8 @@ GoogleMaps
     HomePage,
     ListPage,
     MySpotsPage,
-    ReservePage
+    ReservePage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ GoogleMaps
     HomePage,
     ListPage,
     MySpotsPage,
-    ReservePage
+    ReservePage,
+    DetailsPage
   ],
   providers: [
     StatusBar,

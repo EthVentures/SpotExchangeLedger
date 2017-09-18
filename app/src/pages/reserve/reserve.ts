@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, ApplicationRef } from '@angular/core'
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MockDataService } from '../../services/mock.data.service';
+import { DetailsPage } from '../details/details';
 
  import {
  GoogleMaps,
@@ -55,9 +56,11 @@ export class ReservePage {
       });
 
       poly.setMap(this.map);
-
+      console.log(this.navCtrl);
+      var self = this.navCtrl;
       google.maps.event.addListener(poly, 'click', function (event) {
-
+        console.log(this.navCtrl);
+        self.push(DetailsPage);
       });
     }
 

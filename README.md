@@ -40,10 +40,9 @@ Authenticate <http://localhost:3000/auth/google>
 
 ```shell
 cd app
-npm start
+npm install
+ionic serve
 ```
-
-![application screenshot](https://github.com/EthVentures/SpotExchange/blob/master/res/frontend.png?raw=true "Front End")
 
 ## Team
 
