@@ -99,7 +99,7 @@ export class ReservePage {
 
         let mapOptions = {
           center: latLng,
-          zoom: 18,
+          zoom: 16,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
 

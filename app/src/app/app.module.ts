@@ -15,6 +15,10 @@ import { AuthService } from '../services/auth.service';
 import { MockDataService } from '../services/mock.data.service';
 import { HttpModule } from '@angular/http';
 
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { AccountPage } from '../pages/account/account';
+
 import {
 GoogleMaps
 } from '@ionic-native/google-maps';
@@ -26,7 +30,10 @@ GoogleMaps
     ListPage,
     MySpotsPage,
     ReservePage,
-    DetailsPage
+    DetailsPage,
+    LoginPage,
+    AccountPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,10 @@ GoogleMaps
     ListPage,
     MySpotsPage,
     ReservePage,
-    DetailsPage
+    DetailsPage,
+    LoginPage,
+    AccountPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,

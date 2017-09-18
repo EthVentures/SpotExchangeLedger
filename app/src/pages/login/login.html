@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <ion-title>Login</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="cancel()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input [(ngModel)]="username" type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button full color="sidemenu" (click)="login()">Login</button>
+  </div>
+
+</ion-content>

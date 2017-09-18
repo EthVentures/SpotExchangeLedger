@@ -2,32 +2,57 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { ModalController, NavParams } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MySpotsPage } from '../pages/my-spots/my-spots';
 import { ReservePage } from '../pages/reserve/reserve';
+import { AuthService } from '../services/auth.service';
+
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { AccountPage } from '../pages/account/account';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
   rootPage: any = HomePage;
+  //pages: Array<{title: string, component: any}>;
 
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public modalCtrl: ModalController,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public authService:AuthService) {
     this.initializeApp();
+  }
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'My Spots', component: MySpotsPage },
-      { title: 'Reserve Spots', component: ReservePage }
-    ];
+  getPages(isAuthUser) {
+    if (isAuthUser) {
+      return [
+        { title: 'Home', component: HomePage },
+        { title: 'My Spots', component: MySpotsPage },
+        { title: 'Reserve Spot', component: ReservePage },
+        { title: 'History', component: ReservePage },
+        { title: 'My Account', component: AccountPage },
+        { title: 'Legal', component: HomePage }
+      ];
+    } else {
+      return [
+        { title: 'Home', component: HomePage },
+        { title: 'Legal', component: HomePage }
+      ];
+    }
 
+
+  }
+
+  login() {
+    let profileModal = this.modalCtrl.create(LoginPage, { });
+    profileModal.present();
+  }
+
+  register() {
+    let profileModal = this.modalCtrl.create(RegisterPage, { });
+    profileModal.present();
   }
 
   initializeApp() {

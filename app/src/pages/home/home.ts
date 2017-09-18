@@ -12,7 +12,7 @@ export class HomePage {
   constructor(private navCtrl: NavController, private platform: Platform,private auth: AuthService) { }
 
   login() {
-
+    this.auth.login();
   }
 
 }
