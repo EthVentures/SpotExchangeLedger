@@ -5,12 +5,6 @@
 
 Follow the instructions below to get the required Hyperledger Composer development tools and stand up a Hyperledger Fabric. <https://hyperledger.github.io/composer/installing/development-tools.html>
 
-## Global NPM Packages
-
-```bash
-npm install -g passport-google-oauth2
-```
-
 ## Launch fabric
 
 ```bash
@@ -32,29 +26,9 @@ npm run prepublish
 composer network deploy -a dist/spot-network.bna -p hlfv1 -i PeerAdmin -s randomString
 ```
 
-## Local Environment Variables
-
-Export connection providers as environmental variables.
-
-```bash
-export COMPOSER_PROVIDERS='{
-   "google": {
-     "provider": "google",
-     "module": "passport-google-oauth2",
-     "clientID": "your-client-id",
-     "clientSecret": "your-client-secret",
-     "authPath": "/auth/google",
-     "callbackURL": "/auth/google/callback",
-     "scope": "https://www.googleapis.com/auth/plus.login",
-     "successRedirect": "/",
-     "failureRedirect": "/"
-   }
-}'
-```
-
 ## Generate Rest API for testing
 ```shell
-composer-rest-server -p hlfv1 -n spot-network -i PeerAdmin -s randomString -a true
+composer-rest-server -p hlfv1 -n spot-network -i PeerAdmin -s randomString
 ```
 This will start a rest server listening at: <http://localhost:3000>
 
