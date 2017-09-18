@@ -67,10 +67,6 @@ describe('The Spot Exchange', () => {
 
             // create the parkingspot
             const parkingspot = factory.newResource(NS, 'ParkingSpot', 'EMA');
-            parkingspot.description = '430 N Michigan Ave';
-            parkingspot.city = 'Chicago';
-            parkingspot.ratePerHour = 5;
-            parkingspot.spotRating = 'GOOD';
             parkingspot.owner = factory.newRelationship(NS, 'SpotUser', dan.$identifier);
 
             // create the trade transaction

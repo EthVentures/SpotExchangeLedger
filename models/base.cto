@@ -1,0 +1,81 @@
+/**
+ * The Spot Exchange Network
+ */
+namespace io.ethventures.thespot
+
+concept ContactDetails {
+  o String email  optional
+  o String mobilePhone  optional
+  o String homePhone optional
+  o Address address optional
+}
+
+concept Address {
+    o String street
+    o String city
+    o String state
+    o String country
+    o String zip
+}
+
+
+asset Contract identified by contractId {
+  o String contractId
+  --> Renter renter
+  --> Owner owner
+  o DateTime arrivalDateTime
+  o Double numHours
+}
+
+participant SpotUser identified by userId {
+    o String userId
+    o String firstName
+    o String lastName
+    o Address address optional
+    o ContactDetails contactDetails optional
+    o String[] authorized optional
+}
+
+participant Owner extends SpotUser {
+
+}
+
+participant Renter extends SpotUser {
+
+}
+
+participant SpotAdmin extends SpotUser {
+
+}
+
+
+enum SpotRating {
+  o POOR
+  o AVERAGE
+  o GOOD
+  o GREAT
+}
+
+concept SpotFeatures {
+  o Boolean covered optional
+  o Boolean valet optional
+  o Boolean selfPark optional
+  o Boolean inOutAllowed optional
+  o Boolean handicapAccessible optional
+  o Address address optional
+}
+
+asset ParkingSpot identified by parkingSpotID {
+    o String parkingSpotID
+    o Address address optional
+    o String coordinates optional
+    o Double ratePerHour optional
+    o SpotRating spotRating optional
+    o SpotFeatures features optional
+    --> SpotUser owner
+}
+
+transaction Reserve {
+    --> ParkingSpot parkingspot
+    --> SpotUser newOwner
+}
