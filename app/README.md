@@ -1,28 +1,26 @@
-# app
+This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
+## How to use this template
 
-## Development server
+*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
 
-## Code scaffolding
+### With the Ionic CLI:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
 
-## Build
+```bash
+$ sudo npm install -g ionic cordova
+$ ionic start mySideMenu sidemenu
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Then, to run it, cd into `mySideMenu` and run:
 
-## Running unit tests
+```bash
+$ ionic cordova platform add ios
+$ ionic cordova run ios
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Substitute ios for android if not on a Mac.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
