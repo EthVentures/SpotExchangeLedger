@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AuthService } from '../services/auth.service';
 import { MockDataService } from '../services/mock.data.service';
+import { HttpModule } from '@angular/http';
 
 import {
 GoogleMaps
@@ -29,6 +30,7 @@ GoogleMaps
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

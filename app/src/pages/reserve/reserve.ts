@@ -56,10 +56,8 @@ export class ReservePage {
       });
 
       poly.setMap(this.map);
-      console.log(this.navCtrl);
       var self = this.navCtrl;
       google.maps.event.addListener(poly, 'click', function (event) {
-        console.log(this.navCtrl);
         self.push(DetailsPage);
       });
     }
@@ -72,9 +70,26 @@ export class ReservePage {
     }
 
     loadMap(){
-      console.log("hi Loading...");
+      console.log("Loading...");
       //this.geolocation.getCurrentPosition().then((position) => {
         var position  = { "latitude":41.890713, "longitude":-87.624325 }
+
+        this.mockdata.parkwhizSpot(position.latitude, position.longitude).subscribe(data => {
+            for (var i = 0; i < data.length; i++) {
+              var item = data[i]._embedded['pw:location'];
+              var location = item.entrances[0].coordinates;
+              var itemLatLng = {lat: location[0], lng: location[1]};
+              var marker = new google.maps.Marker({
+                position: itemLatLng,
+                map: this.map,
+                title: item.name
+              });
+              var self = this.navCtrl;
+              google.maps.event.addListener(marker, 'click', function (event) {
+                self.push(DetailsPage);
+              });
+            }
+        });
         console.log("Position");
         console.log(position);
         //let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);

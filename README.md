@@ -38,6 +38,8 @@ Authenticate <http://localhost:3000/auth/google>
 
 ## Running Application
 
+Add API KEY in index.html for google maps and parkwhiz in mock.data.service.ts
+
 ```shell
 cd app
 npm install

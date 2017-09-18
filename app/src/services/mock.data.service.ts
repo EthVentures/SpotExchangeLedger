@@ -1,12 +1,18 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class MockDataService {
 
 
-  constructor(public zone: NgZone) {
+  constructor(public zone: NgZone,public http:Http) {
 
+  }
+
+  public parkwhizSpot(lat,long) {
+    return this.http.get('http://api.parkwhiz.com/v4/quotes/?q=coordinates:'+lat+','+long+'&start_time=2017-12-23T12:00&end_time=2017-12-23T20:00&api_key=').map(res => res.json());
   }
 
   public getSpots() {
