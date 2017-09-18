@@ -1,0 +1,86 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Spots",
+		"_postman_id": "77d63407-7eb6-061a-2e78-b148e1fde919",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Admin",
+			"request": {
+				"url": "http://localhost:3000/api/io.ethventures.thespot.SpotAdmin",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"io.ethventures.thespot.SpotAdmin\",\n  \"userId\": \"1\",\n  \"firstName\": \"David\",\n  \"lastName\": \"Conroy\",\n  \"contactDetails\": {\n    \"$class\": \"io.ethventures.thespot.ContactDetails\",\n    \"email\": \"dconroy@thespot.exchange\",\n    \"mobilePhone\": \"518-461-5998\",\n    \"address\": {\n      \"$class\": \"io.ethventures.thespot.Address\",\n      \"street\": \"2143 Maple Street\",\n      \"city\": \"Chicago\",\n      \"state\": \"IL\",\n      \"country\": \"United States\",\n      \"zip\": \"60647\",\n      \"id\": \"1\"\n    },\n    \"id\": \"1\"\n  },\n  \"authorized\": [\n    \"FULL\"\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"url": "http://localhost:3000/api/io.ethventures.thespot.SpotUser",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"io.ethventures.thespot.SpotUser\",\n  \"userId\": \"2\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Loblaw\",\n  \"contactDetails\": {\n    \"$class\": \"io.ethventures.thespot.ContactDetails\",\n    \"email\": \"bob@boblawblawslawblog.\",\n    \"mobilePhone\": \"555-555-5555\",\n    \"address\": {\n      \"$class\": \"io.ethventures.thespot.Address\",\n      \"street\": \"39 S State Steet\",\n      \"city\": \"Los Angeles\",\n      \"state\": \"CA\",\n      \"country\": \"United States\",\n      \"zip\": \"90211\",\n      \"id\": \"2\"\n    },\n    \"id\": \"2\"\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Spot",
+			"request": {
+				"url": "http://localhost:3000/api/io.ethventures.thespot.ParkingSpot",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"io.ethventures.thespot.ParkingSpot\",\n  \"parkingSpotID\": \"1\",\n  \"address\": {\n    \"$class\": \"io.ethventures.thespot.Address\",\n    \"street\": \"30 Hampton Street\",\n    \"city\": \"Chicago\",\n    \"state\": \"IL\",\n    \"country\": \"United States\",\n    \"zip\": \"60647\",\n    \"id\": \"3\"\n  },\n  \"coordinates\": \"41.8857256,-87.6369590\",\n  \"ratePerHour\": 2,\n  \"spotRating\": \"GOOD\",\n  \"features\": {\n    \"$class\": \"io.ethventures.thespot.SpotFeatures\",\n    \"covered\": true,\n    \"valet\": false,\n    \"selfPark\": true,\n    \"inOutAllowed\": true,\n    \"handicapAccessible\": true,\n    \"id\": \"1\"\n  },\n  \"owner\": \"2\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
