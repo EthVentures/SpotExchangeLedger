@@ -12,6 +12,11 @@ export class RegisterPage {
   }
 
   ionViewDidLoad() {
+
+  }
+
+  register() {
+    
   }
 
   cancel() {

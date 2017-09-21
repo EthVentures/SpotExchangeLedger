@@ -40,11 +40,16 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
   navbar:     #252261,
-  sidemenu:   #8dc43f
+  sidemenu:   #8dc43f,
+  defaultbg:  #434343
 );
 
 #map {
   height: 100%;
+}
+
+.defaultbg {
+  background-color: red;
 }
 // App iOS Variables
 // --------------------------------------------------

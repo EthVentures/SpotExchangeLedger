@@ -18,6 +18,10 @@ export class MySpotsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  view() {
+    
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad MySpotsPage');
   }

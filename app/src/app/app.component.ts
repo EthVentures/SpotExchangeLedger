@@ -12,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AccountPage } from '../pages/account/account';
+import { HistoryPage } from '../pages/history/history';
 
 @Component({
   templateUrl: 'app.html'
@@ -31,14 +32,15 @@ export class MyApp {
         { title: 'Home', component: HomePage },
         { title: 'My Spots', component: MySpotsPage },
         { title: 'Reserve Spot', component: ReservePage },
-        { title: 'History', component: ReservePage },
+        { title: 'History', component: HistoryPage },
         { title: 'My Account', component: AccountPage },
         { title: 'Legal', component: HomePage }
       ];
     } else {
       return [
         { title: 'Home', component: HomePage },
-        { title: 'Legal', component: HomePage }
+        { title: 'Legal', component: HomePage },
+        { title: 'Reserve Spot', component: ReservePage }
       ];
     }
 

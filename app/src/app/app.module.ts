@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AccountPage } from '../pages/account/account';
+import { HistoryPage } from '../pages/history/history';
 
 import {
 GoogleMaps
@@ -33,7 +34,8 @@ GoogleMaps
     DetailsPage,
     LoginPage,
     AccountPage,
-    RegisterPage
+    RegisterPage,
+    HistoryPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ GoogleMaps
     DetailsPage,
     LoginPage,
     AccountPage,
-    RegisterPage
+    RegisterPage,
+    HistoryPage
   ],
   providers: [
     StatusBar,

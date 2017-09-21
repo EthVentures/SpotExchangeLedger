@@ -10,10 +10,84 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>My Spots</ion-title>
+    <ion-buttons right>
+  <button ion-button icon-only><!-- or your method, this is for closing a modal -->
+     <ion-icon name="add"></ion-icon>
+  </button>
+</ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-card>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.889664,-87.619889&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true">
+    <ion-fab right top>
+    </ion-fab>
+    <ion-item>
+      <ion-icon name="car" item-start large></ion-icon>
+      <h2>Plaza Self Parking</h2>
+      <p>300 E North Water St, Chicago, IL 60611</p>
+      <p>Opened 24/7</p>
+    </ion-item>
+    <ion-item>
+      <span item-left>Rate:</span>
+      <span item-left>21 USD/Hr</span>
+      <button ion-button icon-left clear item-end>
+        <ion-icon name="build"></ion-icon>
+        Edit
+      </button>
+    </ion-item>
+    <div padding>
+      <button ion-button full color="sidemenu" (click)="view()">View Transactions</button>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.919186,-87.636519&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true">
+    <ion-fab right top>
+    </ion-fab>
+    <ion-item>
+      <ion-icon name="car" item-start large></ion-icon>
+      <h2>Lincoln Self Parking</h2>
+      <p>2026 N Clark St</p>
+      <p>Opened 7am-11pm</p>
+    </ion-item>
+    <ion-item>
+      <span item-left>Rate:</span>
+      <span item-left>15 USD/Hr</span>
+      <button ion-button icon-left clear item-end>
+        <ion-icon name="build"></ion-icon>
+        Edit
+      </button>
+    </ion-item>
+    <div padding>
+      <button ion-button full color="sidemenu" (click)="view()">View Transactions</button>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.926174,-87.636221&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true">
+    <ion-fab right top>
+    </ion-fab>
+    <ion-item>
+      <ion-icon name="car" item-start large></ion-icon>
+      <h2>North Pond Nature Parking</h2>
+      <p>2400-2418 N Stockton Dr, Chicago, IL 60614</p>
+      <p>Opened 24/7 hours</p>
+    </ion-item>
+    <ion-item>
+      <span item-left>Rate:</span>
+      <span item-left>11 USD/Hr</span>
+      <button ion-button icon-left clear item-end>
+        <ion-icon name="build"></ion-icon>
+        Edit
+      </button>
+    </ion-item>
+    <div padding>
+      <button ion-button full color="sidemenu" (click)="view()">View Transactions</button>
+    </div>
+  </ion-card>
 
 </ion-content>

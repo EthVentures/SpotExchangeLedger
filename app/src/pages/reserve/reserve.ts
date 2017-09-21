@@ -58,7 +58,10 @@ export class ReservePage {
       poly.setMap(this.map);
       var self = this.navCtrl;
       google.maps.event.addListener(poly, 'click', function (event) {
-        self.push(DetailsPage);
+        console.log(event);
+        var obj = event.latLng;
+        console.log(obj.lat() + "," + obj.lng());
+        self.push(DetailsPage, { location: obj });
       });
     }
 
@@ -86,7 +89,9 @@ export class ReservePage {
               });
               var self = this.navCtrl;
               google.maps.event.addListener(marker, 'click', function (event) {
-                self.push(DetailsPage);
+                var obj = event.latLng;
+                console.log(obj.lat() + "," + obj.lng());
+                self.push(DetailsPage, { location: obj });
               });
             }
         });
