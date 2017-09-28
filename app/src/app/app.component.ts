@@ -39,8 +39,7 @@ export class MyApp {
     } else {
       return [
         { title: 'Home', component: HomePage },
-        { title: 'Legal', component: HomePage },
-        { title: 'Reserve Spot', component: ReservePage }
+        { title: 'Legal', component: HomePage }
       ];
     }
 
