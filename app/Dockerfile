@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . /app
 
-CMD ionic serve --port 8888
+CMD ionic serve --port 8888 --nobrowser
