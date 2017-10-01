@@ -49,7 +49,9 @@ asset Contract identified by contractId {
   o String contractId
   --> SpotUser renter
   --> SpotUser owner
-  o DateTime arrivalDateTime
+  --> ParkingSpot spot
+  --> Vehicle vehicle optional
+  o DateTime arrivalDateTime optional
   o Double numHours
 }
 
@@ -64,23 +66,13 @@ asset ParkingSpot identified by parkingSpotID {
 }
 asset Vehicle identified by vehicleId {
   o String vehicleId
-  o String licensePlate
+  o String licensePlate optional
   --> SpotUser owner
-  
-}
 
+}
 
 transaction Reserve {
-    --> ParkingSpot parkingspot
-    --> SpotUser newRental
-}
 
-transaction Cancel {
-    --> ParkingSpot parkingspot
-    --> SpotUser newRental
-}
+    --> Contract contract
 
-transaction Update {
-    --> ParkingSpot parkingspot
-    --> SpotUser newRental
 }

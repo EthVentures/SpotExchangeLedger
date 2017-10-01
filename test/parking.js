@@ -53,10 +53,10 @@ describe('The Spot Exchange', () => {
 
     describe('#reserveParkingSpot', () => {
 
-        it('should be able to trade a parkingspot', () => {
+        it('should be able to reserve a parkingspot', () => {
             const factory = businessNetworkConnection.getBusinessNetwork().getFactory();
 
-            // create the traders
+            // create the owner/renter
             const dan = factory.newResource(NS, 'SpotUser', 'dan@email.com');
             dan.firstName = 'Dan';
             dan.lastName = 'Selman';
@@ -66,44 +66,62 @@ describe('The Spot Exchange', () => {
             simon.lastName = 'Stone';
 
             // create the parkingspot
-            const parkingspot = factory.newResource(NS, 'ParkingSpot', 'EMA');
+            const parkingspot = factory.newResource(NS, 'ParkingSpot', '123 Maple');
             parkingspot.owner = factory.newRelationship(NS, 'SpotUser', dan.$identifier);
 
-            // create the trade transaction
-            const trade = factory.newTransaction(NS, 'Reserve');
-            trade.newRental = factory.newRelationship(NS, 'SpotUser', simon.$identifier);
-            trade.parkingspot = factory.newRelationship(NS, 'ParkingSpot', parkingspot.$identifier);
+            // create simon vehicle
+            const jeep = factory.newResource(NS, 'Vehicle', 'Jeep');
+            jeep.licensePlate = 'RS61KR';
+            jeep.owner = factory.newRelationship(NS, 'SpotUser', simon.$identifier);
+
+            // create the contract
+            const contract = factory.newResource(NS, 'Contract', 'Alpha');
+            contract.owner = factory.newRelationship(NS, 'SpotUser', dan.$identifier);
+            contract.renter = factory.newRelationship(NS, 'SpotUser', simon.$identifier);
+            contract.spot = factory.newRelationship(NS, 'ParkingSpot', parkingspot.$identifier);
+            contract.vehicle = factory.newRelationship(NS, 'Vehicle', jeep.$identifier);
+            contract.numHours = 1;
+
+
+            // create the reserve transaction
+            const reserve = factory.newTransaction(NS, 'Reserve');
+            reserve.contract = factory.newRelationship(NS, 'Contract', contract.$identifier);
+
+
 
             // the owner should of the parkingspot should be dan
             parkingspot.owner.$identifier.should.equal(dan.$identifier);
 
+
             // Get the asset registry.
-            return businessNetworkConnection.getAssetRegistry(NS + '.ParkingSpot')
+            return businessNetworkConnection.getAssetRegistry(NS + '.Contract')
                 .then((assetRegistry) => {
 
-                    // add the parkingspot to the asset registry.
-                    return assetRegistry.add(parkingspot)
+                    // add the contract to the asset registry.
+                    return assetRegistry.add(contract)
                         .then(() => {
                             return businessNetworkConnection.getParticipantRegistry(NS + '.SpotUser');
                         })
                         .then((participantRegistry) => {
-                            // add the traders
+                            // add the reservers
                             return participantRegistry.addAll([dan, simon]);
                         })
                         .then(() => {
                             // submit the transaction
-                            return businessNetworkConnection.submitTransaction(trade);
+                            return businessNetworkConnection.submitTransaction(reserve);
                         })
                         .then(() => {
-                            return businessNetworkConnection.getAssetRegistry(NS + '.ParkingSpot');
+                            return businessNetworkConnection.getAssetRegistry(NS + '.Contract');
                         })
                         .then((assetRegistry) => {
-                            // re-get the parkingspot
-                            return assetRegistry.get(parkingspot.$identifier);
+                            // re-get the contract
+                            return assetRegistry.get(contract.$identifier);
                         })
-                        .then((newParkingSpot) => {
-                            // the owner of the parkingspot should not be simon
-                            newParkingSpot.owner.$identifier.should.equal(simon.$identifier);
+                        .then((newContract) => {
+                            // the renter on the contract should not be simon
+                            newContract.renter.$identifier.should.equal(simon.$identifier);
+                            // the spotowner on the contract should be dan
+                            newContract.owner.$identifier.should.equal(dan.$identifier);
                         });
                 });
         });

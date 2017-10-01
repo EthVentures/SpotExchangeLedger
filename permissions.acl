@@ -10,16 +10,8 @@ rule SystemACL {
   action: ALLOW
 }
 
-rule EverybodyCanReadEverything {
-    description: "Allow all participants read access to all resources"
-    participant: "io.ethventures.thespot.SpotUser"
-    operation: READ
-    resource: "io.ethventures.thespot.*"
-    action: ALLOW
-}
 
-
-rule OwnerHasFullAccessToTheirAssets {
+rule OwnerHasFullAccessToTheirSpots {
     description: "Allow all participants full access to their assets"
     participant(p): "io.ethventures.thespot.SpotUser"
     operation: ALL
@@ -27,6 +19,16 @@ rule OwnerHasFullAccessToTheirAssets {
     condition: (r.owner.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
+
+rule ContractParticipantHasFullAccessToTheirContracts {
+    description: "Allow all participants full access to their assets"
+    participant(p): "io.ethventures.thespot.SpotUser"
+    operation: ALL
+    resource(r): "io.ethventures.thespot.Contract"
+    condition: (r.owner.getIdentifier() === p.getIdentifier() || (r.renter.getIdentifier() === p.getIdentifier()))
+    action: ALLOW
+}
+
 
 rule EverybodyCanSubmitTransactions {
     description: "Allow all participants to submit transactions"
