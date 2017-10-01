@@ -87,7 +87,7 @@ Feature: SpotNetwork
     Scenario: Alice can submit a transaction for her assets
         When I use the identity alice1
         And I submit the following transaction of type io.ethventures.thespot.Reserve
-            | parkingspot | newOwner      |
+            | parkingspot | newRental      |
             | 1         | bob@email.com |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
             | parkingSpotID | description | city | ratePerHour | owner           |
@@ -95,7 +95,7 @@ Feature: SpotNetwork
     Scenario: Bob can submit a transaction for his assets
         When I use the identity bob1
         And I submit the following transaction of type io.ethventures.thespot.Reserve
-            | parkingspot | newOwner        |
+            | parkingspot | newRental        |
             | 2         | alice@email.com |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
             | parkingSpotID | description | city | ratePerHour   | owner           |

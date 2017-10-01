@@ -71,7 +71,7 @@ describe('The Spot Exchange', () => {
 
             // create the trade transaction
             const trade = factory.newTransaction(NS, 'Reserve');
-            trade.newOwner = factory.newRelationship(NS, 'SpotUser', simon.$identifier);
+            trade.newRental = factory.newRelationship(NS, 'SpotUser', simon.$identifier);
             trade.parkingspot = factory.newRelationship(NS, 'ParkingSpot', parkingspot.$identifier);
 
             // the owner should of the parkingspot should be dan
