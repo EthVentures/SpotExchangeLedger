@@ -22,20 +22,30 @@ Feature: SpotNetwork
             | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 1          | alice@email.com |
             | 2             | 898 Rue De Bordeaux          | Paris        | 2          | bob@email.com   |
+        And I have added the following assets of type io.ethventures.thespot.Vehicle
+            | vehicleId | licensePlate | owner |
+            | 1             | rs61kr      | alice@email.com       |
+            | 2             | 21nb12      | bob@email.com       |
+
+        And I have added the following assets of type io.ethventures.thespot.Contract
+            | contractId | renter | owner | spot | numHours           | vehicle|
+            | sample             | alice@email.com | bob@email.com  | 1       | 1          |1|
+            | sample2             | bob@email.com | alice@email.com       | 2       | 3          |2|
+            | sample3             | bob@email.com | alice@email.com       | 2       | 1          |2|
+
         And I have issued the participant io.ethventures.thespot.SpotUser#alice@email.com with the identity alice1
         And I have issued the participant io.ethventures.thespot.SpotUser#bob@email.com with the identity bob1
-    Scenario: Alice can read all of the assets
+
+    Scenario: Alice can  not read all of the assets
         When I use the identity alice1
-        Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
+        Then I should not have the following assets of type io.ethventures.thespot.ParkingSpot
             | parkingSpotID | description | city | ratePerHour | owner           |
-            | 1             | 45 Abbey Rd         | London       | 1          | alice@email.com |
             | 2             | 898 Rue De Bordeaux          | Paris        | 2          | bob@email.com   |
-    Scenario: Bob can read all of the assets
+    Scenario: Bob can not read all of the assets
         When I use the identity bob1
-        Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
+        Then I should not have the following assets of type io.ethventures.thespot.ParkingSpot
             | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 1          | alice@email.com |
-            | 2             | 898 Rue De Bordeaux          | Paris        | 2          | bob@email.com   |
     Scenario: Alice can add assets that she owns
         When I use the identity alice1
         And I add the following asset of type io.ethventures.thespot.ParkingSpot
@@ -56,7 +66,7 @@ Feature: SpotNetwork
         When I use the identity alice1
         And I update the following asset of type io.ethventures.thespot.ParkingSpot
             | parkingSpotID | description | city | ratePerHour | owner           |
-            | 1             | 45 Abbey Rd         | London       | 5        | alice@email.com |
+            | 1             | 45 Abbey Rd         | London2       | 5        | alice@email.com |
         Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
             | parkingSpotID | description | city | ratePerHour | owner           |
             | 1             | 45 Abbey Rd         | London       | 5        | alice@email.com |
@@ -87,16 +97,19 @@ Feature: SpotNetwork
     Scenario: Alice can submit a transaction for her assets
         When I use the identity alice1
         And I submit the following transaction of type io.ethventures.thespot.Reserve
-            | parkingspot | newOwner      |
-            | 1         | bob@email.com |
-        Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | ratePerHour | owner           |
-            | 1             | 45 Abbey Rd         | London       | 1          | bob@email.com |
+        | contract |
+        | sample2  |
+
+        Then I should have the following assets of type io.ethventures.thespot.Contract
+        | contractId | renter | owner | spot | numHours           |vehicle          |
+        | sample2             | bob@email.com | alice@email.com       | 2       | 3          |2|
+
     Scenario: Bob can submit a transaction for his assets
         When I use the identity bob1
         And I submit the following transaction of type io.ethventures.thespot.Reserve
-            | parkingspot | newOwner        |
-            | 2         | alice@email.com |
-        Then I should have the following assets of type io.ethventures.thespot.ParkingSpot
-            | parkingSpotID | description | city | ratePerHour   | owner           |
-            | 2             | 898 Rue De Bordeaux          | Paris        | 2          | alice@email.com   |
+        | contract |
+        | sample3              |
+
+        Then I should have the following assets of type io.ethventures.thespot.Contract
+        | contractId  | renter | owner | spot | numHours           |vehicle          |
+        | sample3             | bob@email.com | alice@email.com       | 2       | 1          |2|

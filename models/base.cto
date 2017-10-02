@@ -17,35 +17,13 @@ concept Address {
     o String zip
 }
 
-
-asset Contract identified by contractId {
-  o String contractId
-  --> Renter renter
-  --> Owner owner
-  o DateTime arrivalDateTime
-  o Double numHours
+concept SpotFeatures {
+  o Boolean covered optional
+  o Boolean valet optional
+  o Boolean selfPark optional
+  o Boolean inOutAllowed optional
+  o Boolean handicapAccessible optional
 }
-
-participant SpotUser identified by userId {
-    o String userId
-    o String firstName
-    o String lastName
-    o ContactDetails contactDetails optional
-
-}
-
-participant Owner extends SpotUser {
-
-}
-
-participant Renter extends SpotUser {
-
-}
-
-participant SpotAdmin extends SpotUser {
-  o String[] authorized optional
-}
-
 
 enum SpotRating {
   o POOR
@@ -54,12 +32,27 @@ enum SpotRating {
   o GREAT
 }
 
-concept SpotFeatures {
-  o Boolean covered optional
-  o Boolean valet optional
-  o Boolean selfPark optional
-  o Boolean inOutAllowed optional
-  o Boolean handicapAccessible optional
+participant SpotUser identified by userId {
+    o String userId
+    o String firstName
+    o String lastName
+    o ContactDetails contactDetails optional
+}
+
+participant SpotAdmin extends SpotUser {
+  o String[] authorized optional
+}
+
+
+
+asset Contract identified by contractId {
+  o String contractId
+  --> SpotUser renter
+  --> SpotUser owner
+  --> ParkingSpot spot
+  --> Vehicle vehicle optional
+  o DateTime arrivalDateTime optional
+  o Double numHours
 }
 
 asset ParkingSpot identified by parkingSpotID {
@@ -71,8 +64,15 @@ asset ParkingSpot identified by parkingSpotID {
     o SpotFeatures features optional
     --> SpotUser owner
 }
+asset Vehicle identified by vehicleId {
+  o String vehicleId
+  o String licensePlate optional
+  --> SpotUser owner
+
+}
 
 transaction Reserve {
-    --> ParkingSpot parkingspot
-    --> SpotUser newOwner
+
+    --> Contract contract
+
 }
