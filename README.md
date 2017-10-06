@@ -10,6 +10,13 @@ Our product ecosystem consists of three main applications linked below:
 * IBM Watson based Price Suggestions [(repo)](https://github.com/EthVentures/SpotExchangeML)
 
 
+For more details about the Phase II submission, [click here](https://goo.gl/n84gDD).
+
+Additional Links:
+* [Our Composer Business Network File](https://github.com/EthVentures/SpotExchangeLedger/blob/master/dist/spot-network.bna)
+* [Explore our Composer REST API](https://api.thespot.exchange:3000/explorer/)
+
+
 ## Composer Network
 **Participants**
 `Spot Users`	`SpotAdmin`
@@ -19,8 +26,6 @@ Our product ecosystem consists of three main applications linked below:
 
 **Transactions**
 `Reserve`
-
-For more details about the Phase II submission, [click here](https://goo.gl/n84gDD).
 
 
 ### Prerequisites
